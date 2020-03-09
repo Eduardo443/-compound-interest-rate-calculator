@@ -36,7 +36,8 @@ namespace taxas
           
             if (opcao == poupanca)
             {
-                // A poupanção, quando a selic esta abaixo de 8.5, paga apenas 70% da mesma...
+                // A poupança, quando a selic esta abaixo de 8.5, paga apenas 70% da mesma...
+                // the poupança, when teh selic rate is below 8.5, it will pay onte 70% of it...
                 double valorP = (calculo.taxa / 100.0) * 70.0;
                 calculo.taxa = valorP + 1;               
             }
@@ -45,6 +46,7 @@ namespace taxas
             if (opcao == tSelic)
             {
                 // o "+ 1" é necessario para o calculo dos juros compostos
+                // the " + 1" is necessery for the math
                 calculo.taxa = calculo.selic + 1;
             }
 
@@ -59,18 +61,21 @@ namespace taxas
             }
 
             //calculador juros compostos do valor inicial
+            // calculeitor of the compound interest of the inicial investment 
             for (int i = 1; i <= tempoI; i++)
             {
                 valorI *= calculo.taxa;
             }
 
             //calculador juros compostos do valor mensal aplicado
+            //calculeitor of the compound interest of the monthly investment 
             for (int i = 1; i <= tempoI; i++)
             {
                 valorMJ *= calculo.taxa;
                 if (i < tempoI)
                 {
                     // realiza a adição do valor aplicado mensalmente
+                    // do the addition of the monthly investment
                     valorMJ += valorM;
                 }
             }
